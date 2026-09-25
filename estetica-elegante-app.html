@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💅 Estética Elegante - Sistema Profissional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0faf7 0%, #e8f5f1 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #2d2d2d 0%, #1f1f1f 100%);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 8px 0 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            border-bottom: 2px solid rgba(72, 160, 144, 0.3);
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #48A090 0%, #2d7a6f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 8px 20px rgba(72, 160, 144, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #48A090;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+        
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .nav-item {
+            padding: 16px 20px;
+            color: #999;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .nav-item:hover {
+            background: rgba(72, 160, 144, 0.1);
+            color: #48A090;
+            border-left-color: #48A090;
+        }
+        
+        .nav-item.active {
+            background: rgba(72, 160, 144, 0.2);
+            color: #48A090;
+            border-left-color: #48A090;
+        }
+        
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px 40px;
+            border-bottom: 1px solid #e0ebe6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        
+        .header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #48A090 0%, #2d7a6f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .user-name {
+            font-size: 13px;
+            color: #999;
+        }
+        
+        /* CONTENT AREA */
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #f0faf7 0%, #e8f5f1 100%);
+        }
+        
+        .content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .content::-webkit-scrollbar-thumb {
+            background: #48A090;
+            border-radius: 4px;
+        }
+        
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e0ebe6;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(72, 160, 144, 0.15);
+            border-color: #48A090;
+        }
+        
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .card-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .card-value {
+            font-size: 32px;
+            color: #48A090;
+            font-weight: 700;
+        }
+        
+        /* SECTION */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #48A090;
+            display: inline-block;
+        }
+        
+        .items-list {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e0ebe6;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+        
+        .item {
+            padding: 20px 28px;
+            border-bottom: 1px solid #e0ebe6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .item:hover {
+            background: #f0faf7;
+        }
+        
+        .item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-left {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-weight: 500;
+            color: #2d2d2d;
+            font-size: 14px;
+        }
+        
+        .item-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+        }
+        
+        .item-value {
+            font-weight: 700;
+            color: #48A090;
+            font-size: 14px;
+        }
+        
+        .item-foto {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: #f0faf7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        /* BUTTON */
+        .btn {
+            background: linear-gradient(135deg, #48A090 0%, #2d7a6f 100%);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(72, 160, 144, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 160, 144, 0.3);
+        }
+        
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal h2 {
+            color: #2d2d2d;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0ebe6;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #48A090;
+            box-shadow: 0 0 0 3px rgba(72, 160, 144, 0.1);
+        }
+        
+        .file-upload {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload label {
+            padding: 10px 16px;
+            background: #f0faf7;
+            border: 1px solid #48A090;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #48A090;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload label:hover {
+            background: #48A090;
+            color: white;
+        }
+        
+        .file-upload span {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .preview-foto {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-top: 10px;
+            object-fit: cover;
+            border: 1px solid #e0ebe6;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+        
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #48A090 0%, #2d7a6f 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0ebe6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: #48A090;
+            box-shadow: 0 4px 12px rgba(72, 160, 144, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">✨</div>
+                <div class="logo-text">Estética Elegante</div>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item active" onclick="showTab('dashboard')">📊 Dashboard</div>
+                <div class="nav-item" onclick="showTab('clientes')">👥 Clientes</div>
+                <div class="nav-item" onclick="showTab('agenda')">📅 Agenda</div>
+                <div class="nav-item" onclick="showTab('orcamentos')">💼 Orçamentos</div>
+                <div class="nav-item" onclick="showTab('financeiro')">💰 Financeiro</div>
+            </div>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="header">
+                <h1 id="pageTitle">📊 Dashboard</h1>
+                <div class="user-info">
+                    <div>
+                        <div style="font-size: 14px; color: #2d2d2d; font-weight: 500;">Bem-vinda!</div>
+                        <div class="user-name">Estética Elegante</div>
+                    </div>
+                    <div class="user-avatar">EE</div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <!-- DASHBOARD -->
+                <div id="dashboard" class="tab-content">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">👥</div>
+                            <div class="card-label">Clientes</div>
+                            <div class="card-value" id="totalClientes">0</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">📅</div>
+                            <div class="card-label">Agendamentos</div>
+                            <div class="card-value" id="totalAgendamentos">0</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">💼</div>
+                            <div class="card-label">Orçamentos</div>
+                            <div class="card-value" id="totalOrcamentos">0</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">💰</div>
+                            <div class="card-label">Receita</div>
+                            <div class="card-value" id="totalReceita">R$ 0</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <div class="section-title">Próximos Agendamentos</div>
+                        <div class="items-list" id="proximosAgendamentos">
+                            <div class="item" style="justify-content: center; color: #999;">
+                                Nenhum agendamento próximo
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CLIENTES -->
+                <div id="clientes" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <button class="btn" onclick="openModal('cliente')">➕ Novo Cliente</button>
+                    </div>
+                    <div class="items-list" id="listaClientes">
+                        <div class="item" style="justify-content: center; color: #999;">
+                            Nenhum cliente cadastrado
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AGENDA -->
+                <div id="agenda" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <button class="btn" onclick="openModal('agendamento')">➕ Novo Agendamento</button>
+                    </div>
+                    <div class="items-list" id="listaAgenda">
+                        <div class="item" style="justify-content: center; color: #999;">
+                            Nenhum agendamento
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORÇAMENTOS -->
+                <div id="orcamentos" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <button class="btn" onclick="openModal('orcamento')">➕ Novo Orçamento</button>
+                    </div>
+                    <div class="items-list" id="listaOrcamentos">
+                        <div class="item" style="justify-content: center; color: #999;">
+                            Nenhum orçamento
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FINANCEIRO -->
+                <div id="financeiro" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <button class="btn" onclick="openModal('gasto')">➕ Novo Gasto</button>
+                    </div>
+                    <div class="items-list" id="listaGastos">
+                        <div class="item" style="justify-content: center; color: #999;">
+                            Nenhum gasto registrado
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODALS -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Novo Item</h2>
+            <form id="modalForm">
+                <div id="modalFields"></div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Salvar</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let dados = {
+            clientes: JSON.parse(localStorage.getItem('ee_clientes')) || [],
+            agendamentos: JSON.parse(localStorage.getItem('ee_agendamentos')) || [],
+            orcamentos: JSON.parse(localStorage.getItem('ee_orcamentos')) || [],
+            gastos: JSON.parse(localStorage.getItem('ee_gastos')) || [],
+            fotos: JSON.parse(localStorage.getItem('ee_fotos')) || {}
+        };
+        
+        let modalType = '';
+        let fotoAtual = null;
+        
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.getElementById(tab).style.display = 'block';
+            
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const titles = {
+                dashboard: '📊 Dashboard',
+                clientes: '👥 Clientes',
+                agenda: '📅 Agenda',
+                orcamentos: '💼 Orçamentos',
+                financeiro: '💰 Financeiro'
+            };
+            document.getElementById('pageTitle').textContent = titles[tab];
+            
+            atualizarDados();
+        }
+        
+        function openModal(type) {
+            modalType = type;
+            const modal = document.getElementById('modal');
+            const fields = document.getElementById('modalFields');
+            
+            if (type === 'cliente') {
+                document.getElementById('modalTitle').textContent = 'Novo Cliente';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" id="nome" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Notas</label>
+                        <textarea id="notas" placeholder="Anotações sobre o cliente" rows="3"></textarea>
+                    </div>
+                `;
+            } else if (type === 'agendamento') {
+                document.getElementById('modalTitle').textContent = 'Novo Agendamento';
+                const clientes = dados.clientes.map(c => `<option value="${c.id}">${c.nome}</option>`).join('');
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <select id="clienteId" required>
+                            <option value="">Selecionar cliente...</option>
+                            ${clientes}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date" id="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hora</label>
+                        <input type="time" id="hora">
+                    </div>
+                    <div class="form-group">
+                        <label>Serviço</label>
+                        <input type="text" id="servico" placeholder="Ex: Botox, Laser, Microagulhamento">
+                    </div>
+                    <div class="form-group">
+                        <label>Preço</label>
+                        <input type="number" id="preco" placeholder="0.00" step="0.01">
+                    </div>
+                `;
+                if (clientes === '') {
+                    fields.innerHTML += '<p style="color: #e74c3c; font-size: 12px;">⚠️ Adicione um cliente primeiro!</p>';
+                }
+            } else if (type === 'orcamento') {
+                document.getElementById('modalTitle').textContent = 'Novo Orçamento';
+                const clientes = dados.clientes.map(c => `<option value="${c.id}">${c.nome}</option>`).join('');
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <select id="clienteId" required>
+                            <option value="">Selecionar cliente...</option>
+                            ${clientes}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição do Procedimento</label>
+                        <textarea id="descricao" placeholder="Detalhes do orçamento" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" id="valor" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Validade (dias)</label>
+                        <input type="number" id="validade" value="7" min="1">
+                    </div>
+                `;
+            } else if (type === 'gasto') {
+                document.getElementById('modalTitle').textContent = 'Novo Gasto';
+                fields.innerHTML = `
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <input type="text" id="descricao" placeholder="Ex: Botox, Seringa, Aluguel" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <select id="categoria" required>
+                            <option value="">Selecionar categoria...</option>
+                            <option value="Material">Material</option>
+                            <option value="Equipamento">Equipamento</option>
+                            <option value="Aluguel">Aluguel</option>
+                            <option value="Utilidades">Utilidades</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="number" id="valor" placeholder="0.00" step="0.01" required>
+                    </div>
+                `;
+            }
+            
+            modal.classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            fotoAtual = null;
+        }
+        
+        document.getElementById('modalForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (modalType === 'cliente') {
+                const novoCliente = {
+                    id: Date.now(),
+                    nome: document.getElementById('nome').value,
+                    telefone: document.getElementById('telefone').value,
+                    email: document.getElementById('email').value,
+                    notas: document.getElementById('notas').value,
+                    data: new Date().toLocaleDateString('pt-BR')
+                };
+                dados.clientes.push(novoCliente);
+                dados.fotos[novoCliente.id] = [];
+            } else if (modalType === 'agendamento') {
+                const clienteId = document.getElementById('clienteId').value;
+                const cliente = dados.clientes.find(c => c.id == clienteId);
+                if (cliente) {
+                    dados.agendamentos.push({
+                        id: Date.now(),
+                        clienteId,
+                        clienteNome: cliente.nome,
+                        data: document.getElementById('data').value,
+                        hora: document.getElementById('hora').value,
+                        servico: document.getElementById('servico').value,
+                        preco: document.getElementById('preco').value,
+                        status: 'agendado'
+                    });
+                }
+            } else if (modalType === 'orcamento') {
+                const clienteId = document.getElementById('clienteId').value;
+                const cliente = dados.clientes.find(c => c.id == clienteId);
+                if (cliente) {
+                    dados.orcamentos.push({
+                        id: Date.now(),
+                        clienteId,
+                        clienteNome: cliente.nome,
+                        descricao: document.getElementById('descricao').value,
+                        valor: document.getElementById('valor').value,
+                        validade: document.getElementById('validade').value,
+                        data: new Date().toLocaleDateString('pt-BR'),
+                        status: 'pendente'
+                    });
+                }
+            } else if (modalType === 'gasto') {
+                dados.gastos.push({
+                    id: Date.now(),
+                    descricao: document.getElementById('descricao').value,
+                    categoria: document.getElementById('categoria').value,
+                    valor: parseFloat(document.getElementById('valor').value),
+                    data: new Date().toLocaleDateString('pt-BR')
+                });
+            }
+            
+            localStorage.setItem('ee_clientes', JSON.stringify(dados.clientes));
+            localStorage.setItem('ee_agendamentos', JSON.stringify(dados.agendamentos));
+            localStorage.setItem('ee_orcamentos', JSON.stringify(dados.orcamentos));
+            localStorage.setItem('ee_gastos', JSON.stringify(dados.gastos));
+            localStorage.setItem('ee_fotos', JSON.stringify(dados.fotos));
+            
+            closeModal();
+            atualizarDados();
+        });
+        
+        function atualizarDados() {
+            // Dashboard
+            document.getElementById('totalClientes').textContent = dados.clientes.length;
+            document.getElementById('totalAgendamentos').textContent = dados.agendamentos.length;
+            document.getElementById('totalOrcamentos').textContent = dados.orcamentos.length;
+            
+            const totalReceita = dados.agendamentos.reduce((acc, a) => acc + (parseFloat(a.preco) || 0), 0);
+            document.getElementById('totalReceita').textContent = 'R$ ' + totalReceita.toFixed(2);
+            
+            // Próximos agendamentos
+            const proximosDiv = document.getElementById('proximosAgendamentos');
+            if (dados.agendamentos.length > 0) {
+                proximosDiv.innerHTML = dados.agendamentos.slice(0, 5).map(a => `
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-name">${a.clienteNome}</div>
+                            <div class="item-info">${a.data} às ${a.hora} • ${a.servico}</div>
+                        </div>
+                        <div class="item-value">R$ ${parseFloat(a.preco).toFixed(2)}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Clientes
+            const listaClientes = document.getElementById('listaClientes');
+            if (dados.clientes.length > 0) {
+                listaClientes.innerHTML = dados.clientes.map(c => `
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-name">${c.nome}</div>
+                            <div class="item-info">${c.telefone} • ${c.email}</div>
+                            ${c.notas ? `<div class="item-info">📝 ${c.notas}</div>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                listaClientes.innerHTML = '<div class="item" style="justify-content: center; color: #999;">Nenhum cliente cadastrado</div>';
+            }
+            
+            // Agenda
+            const listaAgenda = document.getElementById('listaAgenda');
+            if (dados.agendamentos.length > 0) {
+                listaAgenda.innerHTML = dados.agendamentos.map(a => `
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-name">${a.clienteNome}</div>
+                            <div class="item-info">${a.data} às ${a.hora} • ${a.servico}</div>
+                        </div>
+                        <div class="item-value">R$ ${parseFloat(a.preco).toFixed(2)}</div>
+                    </div>
+                `).join('');
+            } else {
+                listaAgenda.innerHTML = '<div class="item" style="justify-content: center; color: #999;">Nenhum agendamento</div>';
+            }
+
+            // Orçamentos
+            const listaOrcamentos = document.getElementById('listaOrcamentos');
+            if (dados.orcamentos.length > 0) {
+                listaOrcamentos.innerHTML = dados.orcamentos.map(o => `
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-name">${o.clienteNome}</div>
+                            <div class="item-info">${o.descricao} • ${o.data}</div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+                            <div class="item-value">R$ ${parseFloat(o.valor).toFixed(2)}</div>
+                            <span style="font-size: 11px; color: #48A090; background: #f0faf7; padding: 4px 12px; border-radius: 20px;">
+                                ${o.status === 'pendente' ? '⏳ Pendente' : '✅ Aceito'}
+                            </span>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                listaOrcamentos.innerHTML = '<div class="item" style="justify-content: center; color: #999;">Nenhum orçamento</div>';
+            }
+            
+            // Gastos
+            const listaGastos = document.getElementById('listaGastos');
+            if (dados.gastos.length > 0) {
+                listaGastos.innerHTML = dados.gastos.map(g => `
+                    <div class="item">
+                        <div class="item-left">
+                            <div class="item-name">${g.descricao}</div>
+                            <div class="item-info">${g.categoria} • ${g.data}</div>
+                        </div>
+                        <div class="item-value" style="color: #e74c3c;">-R$ ${g.valor.toFixed(2)}</div>
+                    </div>
+                `).join('');
+            } else {
+                listaGastos.innerHTML = '<div class="item" style="justify-content: center; color: #999;">Nenhum gasto registrado</div>';
+            }
+        }
+        
+        // Inicializar
+        atualizarDados();
+    </script>
+</body>
+</html>
